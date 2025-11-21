@@ -1,0 +1,27 @@
+{
+  "name": "devtinder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+       "start": "node src/app.js",
+       "dev" : "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shashankvikashji/Devtinder.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Shashank Dubey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shashankvikashji/Devtinder/issues"
+  },
+  "homepage": "https://github.com/shashankvikashji/Devtinder#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
