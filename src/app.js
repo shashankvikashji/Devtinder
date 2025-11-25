@@ -1,16 +1,25 @@
 const express = require('express');
 const app = express();
 
+const {adminAuth , userAuth} = require("./middleware/auth")
 
+app.use("/admin" , adminAuth);
 
-// req / user  , /user/xyz
-app.get( "/user/:userId/:name/:password" , (req,res) => {
-    console.log(req.params);
-    
-    res.send({
-        firstName: "Shashank" , lastName :"Dubey"
-    })
-});
+app.use("/user" , userAuth);
+
+app.get("/user/getAll" , (req , res) => {
+    res.send("All User is send !! ")
+})
+
+// Handling a middleware and Express route 
+
+app.get("/admin/getAllData" , (req , res)=>{
+     res.send("All data is sucessfull sent !! ")
+})
+
+app.get("/admin/deleteAllData" , (req,res)=>{
+    res.send("All data is delete !!")
+})
 
 
 
