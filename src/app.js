@@ -1,27 +1,37 @@
 const express = require('express');
 const app = express();
 
-const {adminAuth , userAuth} = require("./middleware/auth")
+//=>>> Error Handling
+app.use("/" , ( err , req , res , next)=>{
+    // is loged in 
+  if(err){
+    res.status(500).send("Something is wrong !! ")
+  }
+});
 
-app.use("/admin" , adminAuth);
-
-app.use("/user" , userAuth);
-
-app.get("/user/getAll" , (req , res) => {
-    res.send("All User is send !! ")
-})
-
-// Handling a middleware and Express route 
-
-app.get("/admin/getAllData" , (req , res)=>{
-     res.send("All data is sucessfull sent !! ")
-})
-
-app.get("/admin/deleteAllData" , (req,res)=>{
-    res.send("All data is delete !!")
-})
+// try catch handle all 
 
 
+app.get("/getUserData" , (req , res)=>{
+   /*  try{
+           throw new Error("jbrebiufrb");
+           res.send("Something is wrong  !! ")
+    }
+    catch(err){
+        // log the error 
+        res.status(500).send("Something is wrong contact the team  !! ")
+  
+    } */
+   throw new Error("jbrebiufrb");
+   res.send("Something is wrong  !! ")
+    
+});
+
+app.use("/" , ( err , req , res , next)=>{
+  if(err){
+    res.status(500).send("Something is wrong !! ")
+  }
+});
 
 
 app.listen(3000  , () => {
