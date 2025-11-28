@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-       "start": "node src/app.js",
-       "dev" : "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "node src/app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/shashankvikashji/Devtinder#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0"
   }
 }

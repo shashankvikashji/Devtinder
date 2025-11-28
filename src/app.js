@@ -1,40 +1,36 @@
 const express = require('express');
+const connectDB = require("./config/database")
 const app = express();
+const User = require("./models/user");
 
-//=>>> Error Handling
-app.use("/" , ( err , req , res , next)=>{
-    // is loged in 
-  if(err){
-    res.status(500).send("Something is wrong !! ")
-  }
-});
+app.post("/signup" , async (req , res) => {
+     // creating a new instance of the user models 
+    const user = new User({
+      firstName : "Virat",
+    lastName :"Kholi",
+    emailId :"skd@gmail.com",
+    password : "shashank1234"
+    });
+   
+   try{
+    await user.save();
+   res.send("User Added Succesfully !!! ")
+   } catch(err){
+       res.status(400).send("Error saving the user : " + err.message);
+   }
 
-// try catch handle all 
-
-
-app.get("/getUserData" , (req , res)=>{
-   /*  try{
-           throw new Error("jbrebiufrb");
-           res.send("Something is wrong  !! ")
-    }
-    catch(err){
-        // log the error 
-        res.status(500).send("Something is wrong contact the team  !! ")
-  
-    } */
-   throw new Error("jbrebiufrb");
-   res.send("Something is wrong  !! ")
-    
-});
-
-app.use("/" , ( err , req , res , next)=>{
-  if(err){
-    res.status(500).send("Something is wrong !! ")
-  }
-});
+})
 
 
-app.listen(3000  , () => {
+
+
+connectDB().then(()=>{
+    console.log("Database connection established ......")
+    app.listen(3000  , () => {
     console.log("Server is Successfully listening on port 3000 ! ");
     
 });
+}).catch(err=>{
+    console.error("Database connection can't be connected  .....")
+})
+
