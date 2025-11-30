@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require("./config/database")
 const app = express();
 const User = require("./models/user");
+const user = require('./models/user');
 
 
 app.use(express.json());
@@ -71,6 +72,38 @@ app.get("/feed" , async (req , res) => {
 
        res.status(404).send("Something get wrong " );
      }
+})
+
+
+/// Deleting the api using findByIdAndDelete
+
+app.delete("/user" , async (req , res ) => {
+    const userId = req.body.userId;
+    try{
+     const user = await User.findByIdAndDelete(userId);
+      // const user = await User.findByIdAndDelete({_id : userId});
+      res.send("user delete successfully ");
+    }catch(err){
+         res.status(404).send("Something get wrong " );
+    }
+});
+
+
+// update data of the user
+app.patch("/user" , async(req , res) => {
+    const userId = req.body.userId;
+    const data = req.body;
+    try{
+    const user =   await User.findByIdAndUpdate( userId , data , {
+        returnDocument:"after",
+        runValidators:true,
+    });
+    console.log(user);
+    res.send("User updated sucessfully !! ")
+
+    }catch(err){
+         res.status(404).send("Update Failed" + err.message );
+    }
 })
 
 
