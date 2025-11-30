@@ -23,6 +23,7 @@
   "homepage": "https://github.com/shashankvikashji/Devtinder#readme",
   "dependencies": {
     "express": "^5.1.0",
-    "mongoose": "^9.0.0"
+    "mongoose": "^9.0.0",
+    "validator": "^13.15.23"
   }
 }
